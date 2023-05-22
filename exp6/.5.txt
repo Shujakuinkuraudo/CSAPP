@@ -1,0 +1,6 @@
+（1）int x = 32768 -> 0x00008000
+（2）short y = 522 -> 0x020A
+（3）unsigned z = 65530 -> 0xFFFA
+（4）char c = '@' -> 0x40
+（5）float a = -1.1 -> 0xBF8CCCCD
+（6）double b = 10.5 -> 0x402A000000000000
