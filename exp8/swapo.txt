@@ -1,0 +1,140 @@
+
+swap.o:     file format elf32-i386
+
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	01 00                	add    %eax,(%eax)
+   2:	00 00                	add    %al,(%eax)
+   4:	08 00                	or     %al,(%eax)
+	...
+
+Disassembly of section .text:
+
+00000000 <swap>:
+   0:	f3 0f 1e fb          	endbr32 
+   4:	55                   	push   %ebp
+   5:	89 e5                	mov    %esp,%ebp
+   7:	83 ec 10             	sub    $0x10,%esp
+   a:	e8 fc ff ff ff       	call   b <swap+0xb>
+   f:	05 01 00 00 00       	add    $0x1,%eax
+  14:	8b 90 00 00 00 00    	mov    0x0(%eax),%edx
+  1a:	89 90 00 00 00 00    	mov    %edx,0x0(%eax)
+  20:	8b 90 00 00 00 00    	mov    0x0(%eax),%edx
+  26:	8b 12                	mov    (%edx),%edx
+  28:	89 55 fc             	mov    %edx,-0x4(%ebp)
+  2b:	8b 88 00 00 00 00    	mov    0x0(%eax),%ecx
+  31:	8b 90 00 00 00 00    	mov    0x0(%eax),%edx
+  37:	8b 09                	mov    (%ecx),%ecx
+  39:	89 0a                	mov    %ecx,(%edx)
+  3b:	8b 80 00 00 00 00    	mov    0x0(%eax),%eax
+  41:	8b 55 fc             	mov    -0x4(%ebp),%edx
+  44:	89 10                	mov    %edx,(%eax)
+  46:	90                   	nop
+  47:	c9                   	leave  
+  48:	c3                   	ret    
+
+Disassembly of section .data:
+
+00000000 <a>:
+   0:	05                   	.byte 0x5
+   1:	00 00                	add    %al,(%eax)
+	...
+
+Disassembly of section .bss:
+
+00000000 <bufp1>:
+   0:	00 00                	add    %al,(%eax)
+	...
+
+Disassembly of section .data.rel:
+
+00000000 <bufp0>:
+   0:	00 00                	add    %al,(%eax)
+	...
+
+Disassembly of section .text.__x86.get_pc_thunk.ax:
+
+00000000 <__x86.get_pc_thunk.ax>:
+   0:	8b 04 24             	mov    (%esp),%eax
+   3:	c3                   	ret    
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	00 47 43             	add    %al,0x43(%edi)
+   3:	43                   	inc    %ebx
+   4:	3a 20                	cmp    (%eax),%ah
+   6:	28 55 62             	sub    %dl,0x62(%ebp)
+   9:	75 6e                	jne    79 <swap+0x79>
+   b:	74 75                	je     82 <swap+0x82>
+   d:	20 39                	and    %bh,(%ecx)
+   f:	2e 34 2e             	cs xor $0x2e,%al
+  12:	30 2d 31 75 62 75    	xor    %ch,0x75627531
+  18:	6e                   	outsb  %ds:(%esi),(%dx)
+  19:	74 75                	je     90 <swap+0x90>
+  1b:	31 7e 32             	xor    %edi,0x32(%esi)
+  1e:	30 2e                	xor    %ch,(%esi)
+  20:	30 34 2e             	xor    %dh,(%esi,%ebp,1)
+  23:	31 29                	xor    %ebp,(%ecx)
+  25:	20 39                	and    %bh,(%ecx)
+  27:	2e 34 2e             	cs xor $0x2e,%al
+  2a:	30 00                	xor    %al,(%eax)
+
+Disassembly of section .note.gnu.property:
+
+00000000 <.note.gnu.property>:
+   0:	04 00                	add    $0x0,%al
+   2:	00 00                	add    %al,(%eax)
+   4:	0c 00                	or     $0x0,%al
+   6:	00 00                	add    %al,(%eax)
+   8:	05 00 00 00 47       	add    $0x47000000,%eax
+   d:	4e                   	dec    %esi
+   e:	55                   	push   %ebp
+   f:	00 02                	add    %al,(%edx)
+  11:	00 00                	add    %al,(%eax)
+  13:	c0 04 00 00          	rolb   $0x0,(%eax,%eax,1)
+  17:	00 03                	add    %al,(%ebx)
+  19:	00 00                	add    %al,(%eax)
+	...
+
+Disassembly of section .eh_frame:
+
+00000000 <.eh_frame>:
+   0:	14 00                	adc    $0x0,%al
+   2:	00 00                	add    %al,(%eax)
+   4:	00 00                	add    %al,(%eax)
+   6:	00 00                	add    %al,(%eax)
+   8:	01 7a 52             	add    %edi,0x52(%edx)
+   b:	00 01                	add    %al,(%ecx)
+   d:	7c 08                	jl     17 <.eh_frame+0x17>
+   f:	01 1b                	add    %ebx,(%ebx)
+  11:	0c 04                	or     $0x4,%al
+  13:	04 88                	add    $0x88,%al
+  15:	01 00                	add    %eax,(%eax)
+  17:	00 1c 00             	add    %bl,(%eax,%eax,1)
+  1a:	00 00                	add    %al,(%eax)
+  1c:	1c 00                	sbb    $0x0,%al
+  1e:	00 00                	add    %al,(%eax)
+  20:	00 00                	add    %al,(%eax)
+  22:	00 00                	add    %al,(%eax)
+  24:	49                   	dec    %ecx
+  25:	00 00                	add    %al,(%eax)
+  27:	00 00                	add    %al,(%eax)
+  29:	45                   	inc    %ebp
+  2a:	0e                   	push   %cs
+  2b:	08 85 02 42 0d 05    	or     %al,0x50d4202(%ebp)
+  31:	02 41 c5             	add    -0x3b(%ecx),%al
+  34:	0c 04                	or     $0x4,%al
+  36:	04 00                	add    $0x0,%al
+  38:	10 00                	adc    %al,(%eax)
+  3a:	00 00                	add    %al,(%eax)
+  3c:	3c 00                	cmp    $0x0,%al
+  3e:	00 00                	add    %al,(%eax)
+  40:	00 00                	add    %al,(%eax)
+  42:	00 00                	add    %al,(%eax)
+  44:	04 00                	add    $0x0,%al
+  46:	00 00                	add    %al,(%eax)
+  48:	00 00                	add    %al,(%eax)
+	...
