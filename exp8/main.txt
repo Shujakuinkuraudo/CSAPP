@@ -23,15 +23,17 @@ Disassembly of section .note.gnu.build-id:
  1d4:	47                   	inc    %edi
  1d5:	4e                   	dec    %esi
  1d6:	55                   	push   %ebp
- 1d7:	00 df                	add    %bl,%bh
- 1d9:	54                   	push   %esp
- 1da:	00 fb                	add    %bh,%bl
- 1dc:	26 90                	es nop
- 1de:	be bc 56 fb f5       	mov    $0xf5fb56bc,%esi
- 1e3:	9d                   	popf   
- 1e4:	13 bb 0b 1e 5f b6    	adc    -0x49a0e1f5(%ebx),%edi
- 1ea:	f4                   	hlt    
- 1eb:	37                   	aaa    
+ 1d7:	00 7d bc             	add    %bh,-0x44(%ebp)
+ 1da:	2b 11                	sub    (%ecx),%edx
+ 1dc:	24 ac                	and    $0xac,%al
+ 1de:	f1                   	icebp  
+ 1df:	9e                   	sahf   
+ 1e0:	e9 37 25 7f 0f       	jmp    f7f271c <_end+0xf7ee6fc>
+ 1e5:	f5                   	cmc    
+ 1e6:	43                   	inc    %ebx
+ 1e7:	7a db                	jp     1c4 <_init-0xe3c>
+ 1e9:	92                   	xchg   %eax,%edx
+ 1ea:	28 f2                	sub    %dh,%dl
 
 Disassembly of section .note.gnu.property:
 
@@ -197,7 +199,7 @@ Disassembly of section .dynstr:
  333:	00 5f 49             	add    %bl,0x49(%edi)
  336:	54                   	push   %esp
  337:	4d                   	dec    %ebp
- 338:	5f                   	pop    %edi
+ 338:	5f                   	pop    edi
  339:	72 65                	jb     3a0 <_init-0xc60>
  33b:	67 69 73 74 65 72 54 	imul   $0x4d547265,0x74(%bp,%di),%esi
  342:	4d 
@@ -265,10 +267,11 @@ Disassembly of section .rel.dyn:
  3a6:	00 00                	add    %al,(%eax)
  3a8:	08 00                	or     %al,(%eax)
  3aa:	00 00                	add    %al,(%eax)
- 3ac:	08 40 00             	or     %al,0x0(%eax)
- 3af:	00 08                	add    %cl,(%eax)
- 3b1:	00 00                	add    %al,(%eax)
- 3b3:	00 ec                	add    %ch,%ah
+ 3ac:	0c 40                	or     $0x40,%al
+ 3ae:	00 00                	add    %al,(%eax)
+ 3b0:	08 00                	or     %al,(%eax)
+ 3b2:	00 00                	add    %al,(%eax)
+ 3b4:	ec                   	in     (%dx),%al
  3b5:	3f                   	aas    
  3b6:	00 00                	add    %al,(%eax)
  3b8:	06                   	push   %es
@@ -293,7 +296,7 @@ Disassembly of section .rel.dyn:
 Disassembly of section .rel.plt:
 
 000003d4 <.rel.plt>:
- 3d4:	e8 3f 00 00 07       	call   7000418 <_end+0x6ffc3fc>
+ 3d4:	e8 3f 00 00 07       	call   7000418 <_end+0x6ffc3f8>
  3d9:	04 00                	add    $0x0,%al
 	...
 
@@ -379,8 +382,8 @@ Disassembly of section .text:
 000010c0 <deregister_tm_clones>:
     10c0:	e8 e4 00 00 00       	call   11a9 <__x86.get_pc_thunk.dx>
     10c5:	81 c2 17 2f 00 00    	add    $0x2f17,%edx
-    10cb:	8d 8a 38 00 00 00    	lea    0x38(%edx),%ecx
-    10d1:	8d 82 38 00 00 00    	lea    0x38(%edx),%eax
+    10cb:	8d 8a 3c 00 00 00    	lea    0x3c(%edx),%ecx
+    10d1:	8d 82 3c 00 00 00    	lea    0x3c(%edx),%eax
     10d7:	39 c8                	cmp    %ecx,%eax
     10d9:	74 1d                	je     10f8 <deregister_tm_clones+0x38>
     10db:	8b 82 10 00 00 00    	mov    0x10(%edx),%eax
@@ -405,8 +408,8 @@ Disassembly of section .text:
     110b:	55                   	push   %ebp
     110c:	89 e5                	mov    %esp,%ebp
     110e:	53                   	push   %ebx
-    110f:	8d 8a 38 00 00 00    	lea    0x38(%edx),%ecx
-    1115:	8d 82 38 00 00 00    	lea    0x38(%edx),%eax
+    110f:	8d 8a 3c 00 00 00    	lea    0x3c(%edx),%ecx
+    1115:	8d 82 3c 00 00 00    	lea    0x3c(%edx),%eax
     111b:	83 ec 04             	sub    $0x4,%esp
     111e:	29 c8                	sub    %ecx,%eax
     1120:	89 c3                	mov    %eax,%ebx
@@ -437,7 +440,7 @@ Disassembly of section .text:
     1158:	e8 53 ff ff ff       	call   10b0 <__x86.get_pc_thunk.bx>
     115d:	81 c3 7f 2e 00 00    	add    $0x2e7f,%ebx
     1163:	83 ec 04             	sub    $0x4,%esp
-    1166:	80 bb 38 00 00 00 00 	cmpb   $0x0,0x38(%ebx)
+    1166:	80 bb 3c 00 00 00 00 	cmpb   $0x0,0x3c(%ebx)
     116d:	75 27                	jne    1196 <__do_global_dtors_aux+0x46>
     116f:	8b 83 14 00 00 00    	mov    0x14(%ebx),%eax
     1175:	85 c0                	test   %eax,%eax
@@ -447,7 +450,7 @@ Disassembly of section .text:
     1182:	e8 c9 fe ff ff       	call   1050 <__cxa_finalize@plt>
     1187:	83 c4 10             	add    $0x10,%esp
     118a:	e8 31 ff ff ff       	call   10c0 <deregister_tm_clones>
-    118f:	c6 83 38 00 00 00 01 	movb   $0x1,0x38(%ebx)
+    118f:	c6 83 3c 00 00 00 01 	movb   $0x1,0x3c(%ebx)
     1196:	8b 5d fc             	mov    -0x4(%ebp),%ebx
     1199:	c9                   	leave  
     119a:	c3                   	ret    
@@ -469,16 +472,16 @@ Disassembly of section .text:
     11b4:	83 ec 10             	sub    $0x10,%esp
     11b7:	e8 3a 00 00 00       	call   11f6 <__x86.get_pc_thunk.ax>
     11bc:	05 20 2e 00 00       	add    $0x2e20,%eax
-    11c1:	8d 90 30 00 00 00    	lea    0x30(%eax),%edx
-    11c7:	89 90 3c 00 00 00    	mov    %edx,0x3c(%eax)
-    11cd:	8b 90 2c 00 00 00    	mov    0x2c(%eax),%edx
+    11c1:	8d 90 34 00 00 00    	lea    0x34(%eax),%edx
+    11c7:	89 90 40 00 00 00    	mov    %edx,0x40(%eax)
+    11cd:	8b 90 30 00 00 00    	mov    0x30(%eax),%edx
     11d3:	8b 12                	mov    (%edx),%edx
     11d5:	89 55 fc             	mov    %edx,-0x4(%ebp)
-    11d8:	8b 88 3c 00 00 00    	mov    0x3c(%eax),%ecx
-    11de:	8b 90 2c 00 00 00    	mov    0x2c(%eax),%edx
+    11d8:	8b 88 40 00 00 00    	mov    0x40(%eax),%ecx
+    11de:	8b 90 30 00 00 00    	mov    0x30(%eax),%edx
     11e4:	8b 09                	mov    (%ecx),%ecx
     11e6:	89 0a                	mov    %ecx,(%edx)
-    11e8:	8b 80 3c 00 00 00    	mov    0x3c(%eax),%eax
+    11e8:	8b 80 40 00 00 00    	mov    0x40(%eax),%eax
     11ee:	8b 55 fc             	mov    -0x4(%ebp),%edx
     11f1:	89 10                	mov    %edx,(%eax)
     11f3:	90                   	nop
@@ -918,24 +921,27 @@ Disassembly of section .data:
     4004:	04 40                	add    $0x40,%al
 	...
 
-00004008 <bufp0>:
-    4008:	0c 40                	or     $0x40,%al
+00004008 <a>:
+    4008:	05 00 00 00        	add    $0x10000000,%eax
+
+0000400c <bufp0>:
+    400c:	10 40 00             	adc    %al,0x0(%eax)
 	...
 
-0000400c <buf>:
-    400c:	01 00                	add    %eax,(%eax)
-    400e:	00 00                	add    %al,(%eax)
-    4010:	02 00                	add    (%eax),%al
+00004010 <buf>:
+    4010:	01 00                	add    %eax,(%eax)
+    4012:	00 00                	add    %al,(%eax)
+    4014:	02 00                	add    (%eax),%al
 	...
 
 Disassembly of section .bss:
 
-00004014 <completed.7623>:
-    4014:	00 00                	add    %al,(%eax)
+00004018 <completed.7623>:
+    4018:	00 00                	add    %al,(%eax)
 	...
 
-00004018 <bufp1>:
-    4018:	00 00                	add    %al,(%eax)
+0000401c <bufp1>:
+    401c:	00 00                	add    %al,(%eax)
 	...
 
 Disassembly of section .comment:

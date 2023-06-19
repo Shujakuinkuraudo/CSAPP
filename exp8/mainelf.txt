@@ -10,7 +10,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x1070
   Start of program headers:          52 (bytes into file)
-  Start of section headers:          14436 (bytes into file)
+  Start of section headers:          14456 (bytes into file)
   Flags:                             0x0
   Size of this header:               52 (bytes)
   Size of program headers:           32 (bytes)
@@ -46,12 +46,12 @@ Section Headers:
   [22] .fini_array       FINI_ARRAY      00003ee0 002ee0 000004 04  WA  0   0  4
   [23] .dynamic          DYNAMIC         00003ee4 002ee4 0000f8 08  WA  7   0  4
   [24] .got              PROGBITS        00003fdc 002fdc 000024 04  WA  0   0  4
-  [25] .data             PROGBITS        00004000 003000 000014 00  WA  0   0  4
-  [26] .bss              NOBITS          00004014 003014 000008 00  WA  0   0  4
-  [27] .comment          PROGBITS        00000000 003014 00002b 01  MS  0   0  1
-  [28] .symtab           SYMTAB          00000000 003040 0004a0 10     29  48  4
-  [29] .strtab           STRTAB          00000000 0034e0 000269 00      0   0  1
-  [30] .shstrtab         STRTAB          00000000 003749 000118 00      0   0  1
+  [25] .data             PROGBITS        00004000 003000 000018 00  WA  0   0  4
+  [26] .bss              NOBITS          00004018 003018 000008 00  WA  0   0  4
+  [27] .comment          PROGBITS        00000000 003018 00002b 01  MS  0   0  1
+  [28] .symtab           SYMTAB          00000000 003044 0004b0 10     29  48  4
+  [29] .strtab           STRTAB          00000000 0034f4 000269 00      0   0  1
+  [30] .shstrtab         STRTAB          00000000 00375d 000118 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
   L (link order), O (extra OS processing required), G (group), T (TLS),
@@ -68,7 +68,7 @@ Program Headers:
   LOAD           0x000000 0x00000000 0x00000000 0x003dc 0x003dc R   0x1000
   LOAD           0x001000 0x00001000 0x00001000 0x002b4 0x002b4 R E 0x1000
   LOAD           0x002000 0x00002000 0x00002000 0x001ac 0x001ac R   0x1000
-  LOAD           0x002edc 0x00003edc 0x00003edc 0x00138 0x00140 RW  0x1000
+  LOAD           0x002edc 0x00003edc 0x00003edc 0x0013c 0x00144 RW  0x1000
   DYNAMIC        0x002ee4 0x00003ee4 0x00003ee4 0x000f8 0x000f8 RW  0x4
   NOTE           0x0001c8 0x000001c8 0x000001c8 0x00060 0x00060 R   0x4
   GNU_PROPERTY   0x0001ec 0x000001ec 0x000001ec 0x0001c 0x0001c R   0x4
@@ -127,7 +127,7 @@ Relocation section '.rel.dyn' at offset 0x38c contains 9 entries:
 00003ee0  00000008 R_386_RELATIVE   
 00003ff8  00000008 R_386_RELATIVE   
 00004004  00000008 R_386_RELATIVE   
-00004008  00000008 R_386_RELATIVE   
+0000400c  00000008 R_386_RELATIVE   
 00003fec  00000106 R_386_GLOB_DAT    00000000   _ITM_deregisterTMClone
 00003ff0  00000206 R_386_GLOB_DAT    00000000   __cxa_finalize@GLIBC_2.1.3
 00003ff4  00000306 R_386_GLOB_DAT    00000000   __gmon_start__
@@ -149,7 +149,7 @@ Symbol table '.dynsym' contains 7 entries:
      5: 00000000     0 NOTYPE  WEAK   DEFAULT  UND _ITM_registerTMCloneTable
      6: 00002004     4 OBJECT  GLOBAL DEFAULT   18 _IO_stdin_used
 
-Symbol table '.symtab' contains 74 entries:
+Symbol table '.symtab' contains 75 entries:
    Num:    Value  Size Type    Bind   Vis      Ndx Name
      0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
      1: 000001b4     0 SECTION LOCAL  DEFAULT    1 
@@ -177,19 +177,19 @@ Symbol table '.symtab' contains 74 entries:
     23: 00003ee4     0 SECTION LOCAL  DEFAULT   23 
     24: 00003fdc     0 SECTION LOCAL  DEFAULT   24 
     25: 00004000     0 SECTION LOCAL  DEFAULT   25 
-    26: 00004014     0 SECTION LOCAL  DEFAULT   26 
+    26: 00004018     0 SECTION LOCAL  DEFAULT   26 
     27: 00000000     0 SECTION LOCAL  DEFAULT   27 
     28: 00000000     0 FILE    LOCAL  DEFAULT  ABS crtstuff.c
     29: 000010c0     0 FUNC    LOCAL  DEFAULT   16 deregister_tm_clones
     30: 00001100     0 FUNC    LOCAL  DEFAULT   16 register_tm_clones
     31: 00001150     0 FUNC    LOCAL  DEFAULT   16 __do_global_dtors_aux
-    32: 00004014     1 OBJECT  LOCAL  DEFAULT   26 completed.7623
+    32: 00004018     1 OBJECT  LOCAL  DEFAULT   26 completed.7623
     33: 00003ee0     0 OBJECT  LOCAL  DEFAULT   22 __do_global_dtors_aux_fin
     34: 000011a0     0 FUNC    LOCAL  DEFAULT   16 frame_dummy
     35: 00003edc     0 OBJECT  LOCAL  DEFAULT   21 __frame_dummy_init_array_
-    36: 00000000     0 FILE    LOCAL  DEFAULT  ABS main.c
-    37: 00004018     4 OBJECT  LOCAL  DEFAULT   26 bufp1
-    38: 00000000     0 FILE    LOCAL  DEFAULT  ABS swap.c
+    36: 00000000     0 FILE    LOCAL  DEFAULT  ABS swap.c
+    37: 0000401c     4 OBJECT  LOCAL  DEFAULT   26 bufp1
+    38: 00000000     0 FILE    LOCAL  DEFAULT  ABS main.c
     39: 00000000     0 FILE    LOCAL  DEFAULT  ABS crtstuff.c
     40: 000021a8     0 OBJECT  LOCAL  DEFAULT   20 __FRAME_END__
     41: 00000000     0 FILE    LOCAL  DEFAULT  ABS 
@@ -204,27 +204,28 @@ Symbol table '.symtab' contains 74 entries:
     50: 000010b0     4 FUNC    GLOBAL HIDDEN    16 __x86.get_pc_thunk.bx
     51: 00004000     0 NOTYPE  WEAK   DEFAULT   25 data_start
     52: 00001295     0 FUNC    GLOBAL HIDDEN    16 __x86.get_pc_thunk.bp
-    53: 00004014     0 NOTYPE  GLOBAL DEFAULT   25 _edata
+    53: 00004018     0 NOTYPE  GLOBAL DEFAULT   25 _edata
     54: 0000129c     0 FUNC    GLOBAL HIDDEN    17 _fini
     55: 000011a9     0 FUNC    GLOBAL HIDDEN    16 __x86.get_pc_thunk.dx
     56: 00000000     0 FUNC    WEAK   DEFAULT  UND __cxa_finalize@@GLIBC_2.1
     57: 00004000     0 NOTYPE  GLOBAL DEFAULT   25 __data_start
-    58: 00004008     4 OBJECT  GLOBAL DEFAULT   25 bufp0
+    58: 0000400c     4 OBJECT  GLOBAL DEFAULT   25 bufp0
     59: 00000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__
     60: 00004004     0 OBJECT  GLOBAL HIDDEN    25 __dso_handle
     61: 00002004     4 OBJECT  GLOBAL DEFAULT   18 _IO_stdin_used
     62: 00000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_main@@GLIBC_
     63: 00001220   101 FUNC    GLOBAL DEFAULT   16 __libc_csu_init
-    64: 0000401c     0 NOTYPE  GLOBAL DEFAULT   26 _end
+    64: 00004020     0 NOTYPE  GLOBAL DEFAULT   26 _end
     65: 00001070    58 FUNC    GLOBAL DEFAULT   16 _start
     66: 00002000     4 OBJECT  GLOBAL DEFAULT   18 _fp_hw
-    67: 0000400c     8 OBJECT  GLOBAL DEFAULT   25 buf
-    68: 00004014     0 NOTYPE  GLOBAL DEFAULT   26 __bss_start
-    69: 000011fa    38 FUNC    GLOBAL DEFAULT   16 main
-    70: 000011f6     0 FUNC    GLOBAL HIDDEN    16 __x86.get_pc_thunk.ax
-    71: 00004014     0 OBJECT  GLOBAL HIDDEN    25 __TMC_END__
-    72: 00000000     0 NOTYPE  WEAK   DEFAULT  UND _ITM_registerTMCloneTable
-    73: 000011ad    73 FUNC    GLOBAL DEFAULT   16 swap
+    67: 00004010     8 OBJECT  GLOBAL DEFAULT   25 buf
+    68: 00004008     4 OBJECT  GLOBAL DEFAULT   25 a
+    69: 00004018     0 NOTYPE  GLOBAL DEFAULT   26 __bss_start
+    70: 000011fa    38 FUNC    GLOBAL DEFAULT   16 main
+    71: 000011f6     0 FUNC    GLOBAL HIDDEN    16 __x86.get_pc_thunk.ax
+    72: 00004018     0 OBJECT  GLOBAL HIDDEN    25 __TMC_END__
+    73: 00000000     0 NOTYPE  WEAK   DEFAULT  UND _ITM_registerTMCloneTable
+    74: 000011ad    73 FUNC    GLOBAL DEFAULT   16 swap
 
 Histogram for `.gnu.hash' bucket list length (total of 2 buckets):
  Length  Number     % of total  Coverage
@@ -245,7 +246,7 @@ Version needs section '.gnu.version_r' contains 1 entry:
 Displaying notes found in: .note.gnu.build-id
   Owner                Data size 	Description
   GNU                  0x00000014	NT_GNU_BUILD_ID (unique build ID bitstring)
-    Build ID: df5400fb2690bebc56fbf59d13bb0b1e5fb6f437
+    Build ID: 7dbc2b1124acf19ee937257f0ff5437adb9228f2
 
 Displaying notes found in: .note.gnu.property
   Owner                Data size 	Description
